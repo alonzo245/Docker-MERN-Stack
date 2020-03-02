@@ -1,0 +1,1 @@
+This project made for educational purposes, do not use in production! :) 
