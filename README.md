@@ -2,7 +2,7 @@ Made for educational purposes, do not use in production! :)
 
 ----
 ##### Technologies
-<p>
+
 <ul>
 <li>Docker Compose</li>
 <li>Development & Production enviorments</li>
@@ -15,4 +15,7 @@ Made for educational purposes, do not use in production! :)
 <li>HTML5</li>
 <li>SASS</li>
 </ul>
-</p>
+
+-----
+- git clone https://github.com/alonzo245/docker-mern-stack-example
+- docker-compose -f docker-compose.dev.yml up --build
