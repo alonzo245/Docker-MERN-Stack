@@ -1,7 +1,25 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
 :root {
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --bg: #FCFCFC;
+  --bg-panel: #EBEBEB;
+  --color-btn: #0077FF;
+  --color-headings: #0077FF;
+  --color-text: #000000;
+  --input-bg: #fff;
+  --color-text-trans: #333;
+}
+
+:root[theme='dark'] {
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --bg: #333333;
+  --bg-panel: #434343;
+  --color-btn: #3694FF;
+  --color-headings: #3694FF;
+  --color-text: #B5B5B5;
+  --input-bg: #cccccc;
+  --color-text-trans: #cccccc;
 }
 
 * {
@@ -9,14 +27,22 @@
 }
 
 body {
-  background-color: #f7f7f7;
-  display: flex;
+  
+  background-color: var(--bg);
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  font-family: "Lato", sans-serif;
+}
+
+#root {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  height: 100%;
   margin: 0;
-  font-family: 'Lato', sans-serif;
+  padding: 0;
+  width: 100%;
 }
 
 .container {
@@ -25,23 +51,32 @@ body {
 }
 
 h1 {
+  color: var(--color-text);
   letter-spacing: 1px;
   margin: 0;
 }
 
-h3 {
+h2 {
+  color: var(--color-text);
   border-bottom: 1px solid #bbb;
   padding-bottom: 10px;
   margin: 40px 0 10px;
 }
 
+h3 {
+  color: var(--color-text);
+  padding-bottom: 10px;
+  margin: 40px 0 10px;
+}
+
 h4 {
+  color: var(--color-text);
   margin: 0;
   text-transform: uppercase;
 }
 
 .inc-exp-container {
-  background-color: #fff;
+  background-color: var(--bg-panel);
   box-shadow: var(--box-shadow);
   padding: 20px;
   display: flex;
@@ -73,23 +108,24 @@ h4 {
 }
 
 label {
+  color: var(--color-text);
   display: inline-block;
   margin: 10px 0;
 }
 
-input[type='text'],
-input[type='number'] {
+input[type="text"],
+input[type="number"] {
   border: 1px solid #dedede;
   border-radius: 2px;
   display: block;
   font-size: 16px;
   padding: 10px;
   width: 100%;
+  background-color: var(--input-bg);
 }
 
 .btn {
   cursor: pointer;
-  background-color: #9c88ff;
   box-shadow: var(--box-shadow);
   color: #fff;
   border: 0;
@@ -98,6 +134,25 @@ input[type='number'] {
   margin: 10px 0 30px;
   padding: 10px;
   width: 100%;
+}
+
+.btn.add-transaction {
+  background-color:var(--color-btn);
+  border: 0;
+  display: block;
+  font-size: 16px;
+  margin: 10px 0 30px;
+  padding: 10px;
+  width: 100%;
+}
+.btn.toggle-theme {
+  background-color: #cfcfcf;
+  border: 0;
+  display: block;
+  font-size: 13px;
+  margin: 10px 0 30px 0;
+  padding: 5px;
+  width: 50px;
 }
 
 .btn:focus,
@@ -112,9 +167,9 @@ input[type='number'] {
 }
 
 .list li {
-  background-color: #fff;
+  background-color: var(--bg-panel);
   box-shadow: var(--box-shadow);
-  color: #333;
+  color: var(--color-text-trans);
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -148,4 +203,55 @@ input[type='number'] {
 
 .list li:hover .delete-btn {
   opacity: 1;
+}
+/* toggle */
+.toggle-container input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+.toggle-container label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 52px;
+	height: 27px;
+	background: grey;
+	float: right;
+	border-radius: 100px;
+	position: relative;
+}
+
+.toggle-container label:after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+.toggle-container input:checked + label {
+	background: var(--color-headings);
+}
+
+.toggle-container input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+.toggle-container label:active:after {
+	width: 45px;
+}
+
+/* transitions */
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
 }

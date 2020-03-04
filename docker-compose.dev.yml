@@ -9,6 +9,7 @@ services:
       - MONGO_URI=${MONGO_URI}
       - PORT=${PORT}
       - NODE_ENV=development
+      - API_SECRET_TOKEN=${API_SECRET_TOKEN}
     ports:
       - ${PORT}:${PORT}
     volumes:

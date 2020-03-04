@@ -4,7 +4,7 @@ import { numberWithCommas } from '../utils/format'
 
 export const Balance = () => {
     const { transactions } = useContext(GlobalContext)
-    
+
     if (!Array.isArray(transactions)) return (<div></div>)
 
     const amounts = transactions.map(transaction => transaction.amount);
